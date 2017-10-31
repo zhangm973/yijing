@@ -1,0 +1,28 @@
+html ：常用标签
+css：常用属性
+javascript：DOM BOM ES
+jquery
+html5:新增标签，多媒体借口，canvas
+css3：过度，动画，媒体查询，flex
+npm：依赖管理
+webpack、gulp，打包工具和自动化工具
+vue、react、angular：mvvm框架
+http协议
+css预处理：sass、less
+版本控制工具：git svn
+ui库、动画库：bootstrap swiper：
+数据交互：ajax、跨域请求
+
+
+
+http://javascript.ruanyifeng.com/stdlib/array.html#toc15
+
+var arr = [1, 2, 3];
+
+for (var i = 0; i < arr.length; i++) {
+  if (arr[i] === 2) break;
+  console.log(arr[i]);
+}
+// 2
+
+应该是1

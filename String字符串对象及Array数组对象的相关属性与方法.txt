@@ -1,0 +1,126 @@
+﻿
+
+   String 字符串 对象相关属性与方法： 
+
+（1）String.fromCharCode()：  参数为一系列Unicode码点，返回与之相对应的字符串
+
+（2）length属性： 字符串长度
+
+（3）charAt(index): 返回指定位置的字符，若参数为负数或大于等于字符串长度，则返回空字符串
+
+（4）charAtCode(index)：返回指定位置的Unicode码，相当于String.fromCharCode()的逆操作，
+                   若参数为负数或大于等于字符串长度，则返回空字符串
+
+（5）str1.concat(str2):  连接两个字符串，不改变原字符串
+
+（6）str.slice(a,b)： 用于从原字符串中截取子字符串，并返回，不改变原字符串，
+                 参数a表示截取的开始位置，b表示结束位置，但不包含结束位置对应的元素
+
+（7）str.substring(a,b)：截取子字符串   参数b不能小于0，也不能比a小，
+                    若出现，则自动改为0或a  b  调换位置
+
+（8）str.substr(a,length)：截取子字符串   a表示开始位置  length表示截取的字符串长度
+                                     a小于0，则表示倒数计算的字符位置开始
+
+（9）str.indexOf()： 用于返回参数在字符串中的开始位置
+
+（10）str.lastIndexOf()： 用于返回参数在字符串中的结束位置
+
+（11）str.trim()：用于除去字符串两端的空格，返回一个新字符串，不改变原字符串
+
+（12）str.toUpperCase()： 将字符串全部转换成大写，也可以利用call方法将布尔值、数组转换成大写
+
+（13）str.toLowerCase()： 将字符串全部转换成小写  
+                    String.prototype.toUpperCase.call(true);//TRUE
+
+（14）str1.localeCompare(str2)：比较两个字符串的大小--根据Unicode码进行比较
+                          若str1<str2  则返回<0
+                          若str1>str2  则返回>0
+                          若str1=str2  则返回=0
+
+（15）str.match()：用于确定原字符串是否匹配某个子字符串，返回一个数组，
+             成员为匹配的第一个字符串，若无匹配的，则返回null
+              match（）方法还有两个属性index  input
+
+（16）str.search()：等同于match()方法，但返回值为匹配的第一个位置，若无任何匹配，则返回-1
+
+（17）str.replace(search,replacment)：用于替换匹配的子字符串，一般情况只替换第一个匹配值
+
+（18）str.split(a,b)：将字符串分割成定义下的数组  b表示返回数组的最大成员数
+
+
+
+
+    Array  数组 对象相关属性与方法：
+
+（1）Array.isArray(a):判断一个值是否为数组   Array.isArray([1,2,3]);//true
+
+（2）valueof()：返回数组本身
+
+（3）toString()：返回数组的字符串形式
+
+（4）push(a,b,c,……)：在数组末尾添加元素，可添加一个或多个，返回新数组的长度
+                       改变原数组，还可以用于想对象添加元素
+
+（5）pop()：删除数组的最后一个元素，返回值为该元素
+            push()与pop()方法结合使用，即构成桟结构（先进后出）
+
+（6）join()：以参数为分隔符，将数组组成一个字符串返回，若不传参，默认逗号'，'为分隔符
+             若数组中有undefined、null、空位，则会转成空字符串，
+            此方法还可用于字符串或伪数组对象
+
+（7）concat()：用于多个数组合并，返回新数组，但原数组不改变，
+               还可利用call()方法将对象转换成数组
+              [].concat.call({a:1},{b:2});//[{a:1},{b:2}]
+
+（8）shift()：删除数组第一个元素
+              push()与shift()相结合，构成先进先出的队列结构
+
+（9）unshift()：在数组的第一个位置添加元素，返回新数组长度，改变原数组
+
+（10）reverse()：用于颠倒数组中元素的顺序，返回改变后的数组
+                [1,2,3].reverse();//[3,2,1]
+
+（11）slice(a,b)：截取，即提取数组中的一部分，原数组不变
+                  a为截取开始的位置，b未结束的位置，但截取的结果不包含b位置相对应的元素
+                  若只有a值，则表示从开始a位置截取到数组最后
+                 第二个用处：将伪数组转换成真正的数组Array.prototype.slice.call(arguments);
+
+
+（12）splice()：万能的添加与删除
+                当里面有一个或两个参数时，代表删除
+                当里面有三个或多个参数时，代表添加或替换元素
+
+（13）sort()：对数组进行排序，默认按照字典顺序排序，
+              原数组被改变，还可以自定义排序规则
+
+（14）map()：遍历数组，有返回值，返回符合条件的新数组
+             map()中函数接受三个参数：当前数组值、下标值、数组本身
+             map(function(ele,index,array){return index>2});
+             还可以利用call()方法遍历字符串
+            Array.prototype.map.call(string);
+
+（15）forEach()：与map()相似，但没有返回值，
+                 并且forEach()遍历数组时不能中断，而for循环可以中断（break）
+
+
+（16）filter()：筛选，有返回值，但不会改变原数组
+                map、forEach、filter三个方法均可以接受第二个参数，用于指定绑定的this
+
+（17）some()  every()方法：用来判断数组成员是否符合某种条件
+                          两者均接受两个参数：回调函数callback、this
+                          some()只要有一个数组成员符合条件，返回true，则整个结果返回true
+                          every()要所有数组成员都符合条件，都返回true时，整个结果才返回true
+                         对于空数组，some()返回false，every()返回true，回调函数均不执行
+
+（18）reduce()与reduceRight()：依次处理数组的每个成员，最终累计为一个值
+                              还可以指定初始值，即在function(){}之后，在接受一个参数，作为指定值
+                             [1,2,3].reduce(function (x,y){return x+y},0);
+
+（19） indexOf()与lastIndexOf()：返回给定元素在数组中的位置，如没有此元素，则返回-1；
+                                indexOf()：表示返回指定元素在数组中第一次出现的位置；
+                                lastIndexOf()：表示返回指定元素在数组中最后出现的位置
+
+（20）链式操作：即可以多个方法同时使用   .map().filter().forEach()   等等
+
+
